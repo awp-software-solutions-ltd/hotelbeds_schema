@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.hotelbeds.com/schemas/messages"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.hotelbeds.com/schemas/messages">
+  <xsd:simpleType name="st_activityCode">
+    <xsd:restriction base="xsd:string"></xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="st_activityType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="TICKET"></xsd:enumeration>
+      <xsd:enumeration value="EXCURSION"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="st_paxType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="ADULT"></xsd:enumeration>
+      <xsd:enumeration value="CHILD"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="st_durationMetric">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="DAYS"></xsd:enumeration>
+      <xsd:enumeration value="HOURS"></xsd:enumeration>
+      <xsd:enumeration value="MINUTES"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="st_currencyCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="3"></xsd:maxLength>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="st_amount">
+    <xsd:restriction base="xsd:decimal">
+      <xsd:totalDigits value='9' />
+      <xsd:fractionDigits value='2' />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="st_language">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="2"></xsd:maxLength>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="st_searchFilterItemsType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="country"></xsd:enumeration>
+      <xsd:enumeration value="destination"></xsd:enumeration>
+      <xsd:enumeration value="factsheet"></xsd:enumeration>
+      <xsd:enumeration value="service"></xsd:enumeration>
+      <xsd:enumeration value="hotel"></xsd:enumeration>
+      <xsd:enumeration value="giata"></xsd:enumeration>
+      <xsd:enumeration value="tti"></xsd:enumeration>
+      <xsd:enumeration value="service_modality"></xsd:enumeration>
+      <xsd:enumeration value="gps"></xsd:enumeration>
+      <xsd:enumeration value="text"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="st_ActivitySearchRequestOrder">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="PRICE"></xsd:enumeration>
+      <xsd:enumeration value="NAME"></xsd:enumeration>
+      <xsd:enumeration value="DEFAULT"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="st_modalityCode">
+    <xsd:restriction base="xsd:string"></xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

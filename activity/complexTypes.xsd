@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.hotelbeds.com/schemas/messages"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.hotelbeds.com/schemas/messages">
+  <xsd:include schemaLocation="simpleTypes.xsd"></xsd:include>
+  <xsd:complexType name="ct_ActivityDetailResponse">
+    <xsd:sequence>
+      <xsd:element name="operationId" type="xsd:string"></xsd:element>
+      <xsd:element name="auditData" type="ct_auditData"></xsd:element>
+      <xsd:element name="activity" type="ct_activity_rs"></xsd:element>
+      <xsd:element name="errors" type="ct_errors"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_auditData">
+    <xsd:sequence>
+      <xsd:element name="time" type="xsd:dateTime"></xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="serverId" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="environment" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="processTime" type="xsd:string"></xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_activity_rs">
+    <xsd:sequence>
+      <xsd:element name="order" type="xsd:string"></xsd:element>
+      <xsd:element name="currencyName" type="xsd:string"></xsd:element>
+      <xsd:element name="amountsFrom" type="ct_amount" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="operationDays" type="ct_operationDays" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="modalities" type="ct_modality" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="country" type="ct_country"></xsd:element>
+      <xsd:element name="content" type="ct_content"></xsd:element>
+      <xsd:element name="status" type="xsd:string"></xsd:element>
+      <xsd:element name="supplier" type="ct_supplier"></xsd:element>
+      <xsd:element name="comments" type="ct_comments"></xsd:element>
+      <xsd:element name="type" type="xsd:string"></xsd:element>
+      <xsd:element name="vouchers" type="ct_vouchers" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="modality" type="ct_modality"></xsd:element>
+      <xsd:element name="dateFrom" type="xsd:date"></xsd:element>
+      <xsd:element name="dateTo" type="xsd:date"></xsd:element>
+      <xsd:element name="cancellationPolicies" type="ct_cancellationPolicies"></xsd:element>
+      <xsd:element name="paxes" type="ct_paxes" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="questions" type="ct_questions"></xsd:element>
+      <xsd:element name="contactInfo" type="ct_contactInfo"></xsd:element>
+      <xsd:element name="agencyCommission" type="ct_agencyCommission"></xsd:element>
+      <xsd:element name="amountDetail" type="ct_amountDetail"></xsd:element>
+      <xsd:element name="providerInformation" type="ct_providerInformation"></xsd:element>
+      <xsd:element name="extraData" type="ct_extraData"></xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="type" type="st_activityType"></xsd:attribute>
+    <xsd:attribute name="code" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="activityCode" type="st_activityCode"></xsd:attribute>
+    <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="currency" type="st_currencyCode"></xsd:attribute>
+    <xsd:attribute name="countryCode" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="destinationCode" type="xsd:string"></xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_amount">
+    <xsd:attribute name="paxType" type="st_paxType"></xsd:attribute>
+    <xsd:attribute name="ageFrom" type="xsd:integer"></xsd:attribute>
+    <xsd:attribute name="ageTo" type="xsd:integer"></xsd:attribute>
+    <xsd:attribute name="amount" type="st_amount"></xsd:attribute>
+    <xsd:attribute name="boxOfficeAmount" type="st_amount"></xsd:attribute>
+    <xsd:attribute name="mandatoryApplyAmount" type="xsd:boolean"></xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_operationDays">
+    <xsd:attribute name="code" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_modality">
+    <xsd:sequence>
+      <xsd:element name="name" type="xsd:string"></xsd:element>
+      <xsd:element name="duration" type="ct_duration"></xsd:element>
+      <xsd:element name="destinationCode" type="xsd:string"></xsd:element>
+      <xsd:element name="amountsFrom" type="ct_amount"></xsd:element>
+      <xsd:element name="amountUnitType" type="xsd:string"></xsd:element>
+      <xsd:element name="rates" type="ct_rates"></xsd:element>
+      <xsd:element name="supplierInformation" type="ct_supplierInformation"></xsd:element>
+      <xsd:element name="providerInformation" type="ct_providerInformation"></xsd:element>
+      <xsd:element name="comments" type="ct_comments"></xsd:element>
+      <xsd:element name="cancellationPolicies" type="ct_cancellationPolicies"></xsd:element>
+            <xsd:element name="uniqueIdentifier" type="xsd:string"></xsd:element>
+        </xsd:sequence>
+    <xsd:attribute name="code" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_country">
+    <xsd:sequence>
+      <xsd:element name="destinations" type="ct_destination"></xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="code" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_destination">
+    <xsd:attribute name="code" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_content">
+    <xsd:sequence>
+      <xsd:element name="contentId" type="xsd:string"></xsd:element>
+      <xsd:element name="activityFactsheetType" type="xsd:string"></xsd:element>
+      <xsd:element name="activityCode" type="xsd:string"></xsd:element>
+      <xsd:element name="name" type="xsd:string"></xsd:element>
+      <xsd:element name="modalityCode" type="xsd:string"></xsd:element>
+      <xsd:element name="modalityName" type="xsd:string"></xsd:element>
+      <xsd:element name="location" type="ct_location"></xsd:element>
+      <xsd:element name="media" type="ct_media"></xsd:element>
+      <xsd:element name="description" type="xsd:string"></xsd:element>
+      <xsd:element name="lastUpdate" type="xsd:string"></xsd:element>
+      <xsd:element name="summary" type="xsd:string"></xsd:element>
+      <xsd:element name="highlights" type="xsd:string" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="featureGroups" type="ct_featureGroups" maxOccurs="unbounded"></xsd:element>
+      <xsd:element name="guidingOptions" type="ct_guidingOptions"></xsd:element>
+      <xsd:element name="importantInfo" type="xsd:string"></xsd:element>
+      <xsd:element name="redeemInfo" type="ct_redeemInfo"></xsd:element>
+      <xsd:element name="routes" type="ct_routes" maxOccurs="unbounded"></xsd:element>
+            <xsd:element name="scheduling" type="ct_scheduling"></xsd:element>
+            <xsd:element name="segmentationGroups" type="ct_segmentationGroups" maxOccurs="unbounded"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_duration">
+    <xsd:sequence>
+      <xsd:element name="value" type="xsd:string"></xsd:element>
+      <xsd:element name="metric" type="st_durationMetric"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_rates">
+    <xsd:sequence>
+      <xsd:element name="rateDetails" type="ct_rateDetails"></xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="rateCode" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="rateClass" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_rateDetails">
+    <xsd:sequence>
+      <xsd:element name="operationDates" type="ct_operationDates"></xsd:element>
+      <xsd:element name="minimumDuration" type="ct_duration"></xsd:element>
+      <xsd:element name="maximumDuration" type="ct_duration"></xsd:element>
+      <xsd:element name="totalAmount" type="ct_amount"></xsd:element>
+      <xsd:element name="paxAmounts" type="ct_amount"></xsd:element>
+      <xsd:element name="agencyCommission" type="ct_agencyCommission"></xsd:element>
+      <xsd:element name="languages" type="ct_languages"></xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="rateKey" type="xsd:string"></xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_operationDates">
+    <xsd:sequence>
+      <xsd:element name="from" type="xsd:string"></xsd:element>
+      <xsd:element name="to" type="xsd:string"></xsd:element>
+      <xsd:element name="cancellationPolicies" type="ct_cancellationPolicies"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_cancellationPolicies">
+    <xsd:attribute name="dateFrom" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="amount" type="xsd:string"></xsd:attribute>
+  </xsd:complexType>
+
+
+  <xsd:complexType name="ct_agencyCommission">
+    <xsd:sequence>
+      <xsd:element name="percentage" type="xsd:string"></xsd:element>
+      <xsd:element name="vatAmount" type="st_amount"></xsd:element>
+      <xsd:element name="amount" type="st_amount"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_supplierInformation">
+    <xsd:sequence>
+      <xsd:element name="name" type="xsd:string"></xsd:element>
+      <xsd:element name="vatNumber" type="xsd:string"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_providerInformation">
+    <xsd:sequence>
+      <xsd:element name="name" type="xsd:string"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_comments">
+    <xsd:sequence>
+      <xsd:element name="text" type="xsd:string"></xsd:element>
+      <xsd:element name="description" type="xsd:string"></xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="type" type="xsd:string"></xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_location">
+    <xsd:sequence>
+      <xsd:element name="startingPoints" type="ct_startingPoints"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_startingPoints">
+    <xsd:sequence>
+      <xsd:element name="meetingPoint" type="ct_meetingPoint"></xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="type" type="xsd:string"></xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_meetingPoint">
+    <xsd:sequence>
+      <xsd:element name="geolocation" type="ct_geolocation"></xsd:element>
+      <xsd:element name="address" type="xsd:string"></xsd:element>
+      <xsd:element name="country" type="ct_country"></xsd:element>
+      <xsd:element name="description" type="xsd:string"></xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="type" type="xsd:string"></xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_geolocation">
+    <xsd:sequence>
+      <xsd:element name="latitude" type="xsd:string"></xsd:element>
+      <xsd:element name="longitude" type="xsd:string"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_media">
+    <xsd:sequence>
+      <xsd:element name="images" type="ct_images" maxOccurs="unbounded"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_images">
+    <xsd:sequence>
+      <xsd:element name="name" type="xsd:string"></xsd:element>
+      <xsd:element name="mimeType" type="xsd:string"></xsd:element>
+      <xsd:element name="language" type="xsd:string"></xsd:element>
+      <xsd:element name="urls" type="ct_urls" maxOccurs="unbounded"></xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="visualizationOrder" type="xsd:string"></xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_urls">
+    <xsd:sequence>
+      <xsd:element name="dpi" type="xsd:string"></xsd:element>
+      <xsd:element name="height" type="xsd:string"></xsd:element>
+      <xsd:element name="width" type="xsd:string"></xsd:element>
+      <xsd:element name="resource" type="xsd:string"></xsd:element>
+      <xsd:element name="sizeType" type="xsd:string"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_featureGroups">
+    <xsd:sequence>
+      <xsd:element name="included" type="ct_included"></xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="groupCode" type="xsd:string"></xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_included">
+    <xsd:sequence>
+      <xsd:element name="description" type="xsd:string"></xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="featureType" type="xsd:string"></xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_guidingOptions">
+    <xsd:attribute name="guideType" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="included" type="xsd:string"></xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_segmentationGroups">
+    <xsd:sequence>
+      <xsd:element name="segments" type="ct_segments"></xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="code" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_segments">
+    <xsd:attribute name="code" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_ActivityDetailRequest">
+    <xsd:sequence>
+      <xsd:element name="language" type="xsd:string"></xsd:element>
+      <xsd:element name="from" type="xsd:date"></xsd:element>
+      <xsd:element name="to" type="xsd:date"></xsd:element>
+      <xsd:element name="code" type="st_activityCode"></xsd:element>
+            <xsd:element name="modalityCode" type="st_modalityCode"></xsd:element>
+            <xsd:element name="paxes" type="ct_paxes" maxOccurs="unbounded"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ct_paxes">
+    <xsd:sequence>
+      <xsd:element name="mailing" type="xsd:string"></xsd:element>
+      <xsd:element name="age" type="xsd:string"></xsd:element>
+      <xsd:element name="paxType" type="xsd:string"></xsd:element>
+      <xsd:element name="passport" type="xsd:string"></xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="type" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="age" type="xsd:integer"></xsd:attribute>
+    <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="surname" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="customerId" type="xsd:string"></xsd:attribute>
+  </xsd:complexType>
+
+
+  <xsd:complexType name="ct_errors">
+      <xsd:sequence>
+        <xsd:element name="text" type="xsd:string"></xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="code" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_ActivitySearchRequest">
+      <xsd:sequence>
+        <xsd:element name="language" type="st_language"></xsd:element>
+        <xsd:element name="filters" type="ct_filters"></xsd:element>
+        <xsd:element name="pagination" type="ct_pagination"></xsd:element>
+        <xsd:element name="from" type="xsd:date"></xsd:element>
+        <xsd:element name="to" type="xsd:date"></xsd:element>
+        <xsd:element name="order" type="st_ActivitySearchRequestOrder"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_pagination">
+      <xsd:sequence>
+        <xsd:element name="itemsPerPage" type="xsd:integer"></xsd:element>
+        <xsd:element name="page" type="xsd:integer"></xsd:element>
+        <xsd:element name="totalItems" type="xsd:integer"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_filters">
+      <xsd:sequence>
+        <xsd:element name="searchFilterItems" type="ct_searchFilterItems"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_searchFilterItems">
+      <xsd:sequence>
+        <xsd:element name="type" type="st_searchFilterItemsType"></xsd:element>
+        <xsd:element name="value" type="xsd:string"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_ActivitySearchResponse">
+      <xsd:sequence>
+        <xsd:element name="operationId" type="xsd:string"></xsd:element>
+        <xsd:element name="pagination" type="ct_pagination"></xsd:element>
+        <xsd:element name="auditData" type="ct_auditData"></xsd:element>
+        <xsd:element name="activities" type="ct_activity_rs"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_redeemInfo">
+      <xsd:sequence>
+        <xsd:element name="directEntrance" type="xsd:string"></xsd:element>
+        <xsd:element name="comments" type="ct_comments"></xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="type" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_routes">
+      <xsd:sequence>
+        <xsd:element name="duration" type="ct_duration"></xsd:element>
+        <xsd:element name="description" type="xsd:string"></xsd:element>
+        <xsd:element name="timeFrom" type="xsd:string"></xsd:element>
+        <xsd:element name="timeTo" type="xsd:string"></xsd:element>
+        <xsd:element name="points" type="ct_points" maxOccurs="unbounded"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_points">
+      <xsd:sequence>
+        <xsd:element name="pointOfInterest" type="ct_pointOfInterest"></xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="type" type="xsd:string"></xsd:attribute>
+      <xsd:attribute name="order" type="xsd:string"></xsd:attribute>
+      <xsd:attribute name="stop" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_pointOfInterest">
+      <xsd:sequence>
+        <xsd:element name="geolocation" type="ct_geolocation"></xsd:element>
+        <xsd:element name="address" type="xsd:string"></xsd:element>
+        <xsd:element name="country" type="ct_country"></xsd:element>
+            <xsd:element name="city" type="xsd:string"></xsd:element>
+            <xsd:element name="zip" type="xsd:string"></xsd:element>
+        <xsd:element name="description" type="xsd:string"></xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="type" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_scheduling">
+      <xsd:sequence>
+        <xsd:element name="duration" type="ct_duration"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_RetrieveExcursionPickupsRequest">
+      <xsd:sequence>
+        <xsd:element name="pickupRetrievalKey" type="xsd:string"></xsd:element>
+        <xsd:element name="from" type="xsd:date"></xsd:element>
+        <xsd:element name="to" type="xsd:date"></xsd:element>
+        <xsd:element name="sessionCode" type="xsd:string"></xsd:element>
+        <xsd:element name="elementCode" type="xsd:string"></xsd:element>
+        <xsd:element name="hotelCode" type="xsd:string"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_BookingCreditConfirmRequest">
+      <xsd:sequence>
+        <xsd:element name="language" type="xsd:string"></xsd:element>
+        <xsd:element name="clientReference" type="xsd:string"></xsd:element>
+        <xsd:element name="holder" type="ct_holder"></xsd:element>
+        <xsd:element name="activities" type="ct_activity_rq"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_holder">
+      <xsd:sequence>
+        <xsd:element name="email" type="xsd:string"></xsd:element>
+        <xsd:element name="address" type="xsd:string"></xsd:element>
+        <xsd:element name="zipCode" type="xsd:string"></xsd:element>
+        <xsd:element name="country" type="xsd:string"></xsd:element>
+        <xsd:element name="mailing" type="xsd:boolean"></xsd:element>
+        <xsd:element name="telephones" type="xsd:string" maxOccurs="unbounded"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_activity_rq">
+      <xsd:sequence>
+        <xsd:element name="preferedLanguage" type="st_language"></xsd:element>
+        <xsd:element name="serviceLanguage" type="st_language"></xsd:element>
+        <xsd:element name="rateKey" type="xsd:string"></xsd:element>
+        <xsd:element name="from" type="xsd:date"></xsd:element>
+        <xsd:element name="to" type="xsd:date"></xsd:element>
+        <xsd:element name="paxes" type="ct_paxes"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_BookingResponse">
+      <xsd:sequence>
+        <xsd:element name="operationId" type="xsd:string"></xsd:element>
+        <xsd:element name="auditData" type="ct_auditData"></xsd:element>
+        <xsd:element name="booking" type="ct_booking"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_booking">
+      <xsd:sequence>
+        <xsd:element name="reference" type="xsd:string"></xsd:element>
+        <xsd:element name="status" type="xsd:string"></xsd:element>
+        <xsd:element name="currency" type="st_currencyCode"></xsd:element>
+        <xsd:element name="pendingAmount" type="st_amount"></xsd:element>
+        <xsd:element name="agency" type="ct_agency"></xsd:element>
+        <xsd:element name="creationDate" type="xsd:dateTime"></xsd:element>
+        <xsd:element name="paymentData" type="ct_paymentData"></xsd:element>
+        <xsd:element name="clientReference" type="xsd:string"></xsd:element>
+        <xsd:element name="holder" type="ct_holder"></xsd:element>
+        <xsd:element name="total" type="st_amount"></xsd:element>
+        <xsd:element name="totalNet" type="st_amount"></xsd:element>
+        <xsd:element name="activities" type="ct_activity_rs"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_agency">
+      <xsd:sequence>
+        <xsd:element name="branch" type="xsd:string"></xsd:element>
+        <xsd:element name="comments" type="xsd:string"></xsd:element>
+        <xsd:element name="sucursal" type="ct_sucursal"></xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="code" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_sucursal">
+      <xsd:sequence>
+        <xsd:element name="name" type="xsd:string"></xsd:element>
+        <xsd:element name="street" type="xsd:string"></xsd:element>
+        <xsd:element name="zip" type="xsd:string"></xsd:element>
+        <xsd:element name="city" type="xsd:string"></xsd:element>
+        <xsd:element name="email" type="xsd:string"></xsd:element>
+        <xsd:element name="region" type="xsd:string"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_paymentData">
+      <xsd:sequence>
+        <xsd:element name="paymentType" type="ct_paymentType"></xsd:element>
+        <xsd:element name="invoicingCompany" type="ct_invoicingCompany"></xsd:element>
+        <xsd:element name="description" type="xsd:string"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_paymentType">
+      <xsd:attribute name="code" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_invoicingCompany">
+      <xsd:sequence>
+        <xsd:element name="registrationNumber" type="xsd:string"></xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="code" type="xsd:string"></xsd:attribute>
+      <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:attribute name="NewAttribute" type="xsd:string"></xsd:attribute>
+
+
+    <xsd:complexType name="ct_supplier">
+      <xsd:sequence>
+        <xsd:element name="name" type="xsd:string"></xsd:element>
+        <xsd:element name="vatNumber" type="xsd:string"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="ct_vouchers">
+      <xsd:sequence>
+        <xsd:element name="language" type="st_language"></xsd:element>
+        <xsd:element name="url" type="xsd:string"></xsd:element>
+        <xsd:element name="mimeType" type="xsd:string"></xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="code" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_languages">
+      <xsd:attribute name="code" type="st_language"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_questions">
+      <xsd:sequence>
+        <xsd:element name="question" type="ct_question"></xsd:element>
+        <xsd:element name="answer" type="xsd:string"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_question">
+      <xsd:sequence>
+        <xsd:element name="text" type="xsd:string"></xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="code" type="xsd:string"></xsd:attribute>
+      <xsd:attribute name="required" type="xsd:boolean"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_contactInfo">
+      <xsd:sequence>
+        <xsd:element name="address" type="xsd:string"></xsd:element>
+        <xsd:element name="postalCode" type="xsd:string"></xsd:element>
+        <xsd:element name="country" type="ct_country"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_amountDetail">
+      <xsd:sequence>
+        <xsd:element name="totalAmount" type="ct_totalAmount"></xsd:element>
+        <xsd:element name="paxAmounts" type="ct_paxAmounts"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_totalAmount">
+      <xsd:attribute name="amount" type="st_amount"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_paxAmounts">
+        <xsd:attribute name="paxType" type="xsd:string"></xsd:attribute>
+        <xsd:attribute name="amount" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_extraData">
+      <xsd:sequence>
+        <xsd:element name="value" type="xsd:string"></xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="id" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+</xsd:schema>
