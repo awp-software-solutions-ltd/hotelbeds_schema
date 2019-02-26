@@ -75,7 +75,7 @@
       <xsd:element name="name" type="xsd:string"></xsd:element>
       <xsd:element name="duration" type="ct_duration"></xsd:element>
       <xsd:element name="destinationCode" type="xsd:string"></xsd:element>
-      <xsd:element name="amountsFrom" type="ct_amount"></xsd:element>
+      <xsd:element name="amountsFrom" type="ct_amount" maxOccurs="unbounded"></xsd:element>
       <xsd:element name="amountUnitType" type="xsd:string"></xsd:element>
       <xsd:element name="rates" type="ct_rate" maxOccurs="unbounded"></xsd:element>
       <xsd:element name="supplierInformation" type="ct_supplierInformation"></xsd:element>
@@ -147,7 +147,7 @@
       <xsd:element name="minimumDuration" type="ct_duration"></xsd:element>
       <xsd:element name="maximumDuration" type="ct_duration"></xsd:element>
       <xsd:element name="totalAmount" type="ct_amount"></xsd:element>
-      <xsd:element name="paxAmounts" type="ct_amount"></xsd:element>
+      <xsd:element name="paxAmounts" type="ct_amount" maxOccurs="unbounded"></xsd:element>
       <xsd:element name="agencyCommission" type="ct_agencyCommission"></xsd:element>
       <xsd:element name="languages" type="ct_language" maxOccurs="unbounded"></xsd:element>
     </xsd:sequence>
@@ -156,15 +156,15 @@
 
   <xsd:complexType name="ct_operationDate">
     <xsd:sequence>
-      <xsd:element name="from" type="xsd:string"></xsd:element>
-      <xsd:element name="to" type="xsd:string"></xsd:element>
+      <xsd:element name="from" type="xsd:date"></xsd:element>
+      <xsd:element name="to" type="xsd:date"></xsd:element>
       <xsd:element name="cancellationPolicies" type="ct_cancellationPolicy" maxOccurs="unbounded"></xsd:element>
     </xsd:sequence>
   </xsd:complexType>
 
   <xsd:complexType name="ct_cancellationPolicy">
-    <xsd:attribute name="dateFrom" type="xsd:string"></xsd:attribute>
-    <xsd:attribute name="amount" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="dateFrom" type="xsd:dateTime"></xsd:attribute>
+    <xsd:attribute name="amount" type="st_amount"></xsd:attribute>
   </xsd:complexType>
 
 
