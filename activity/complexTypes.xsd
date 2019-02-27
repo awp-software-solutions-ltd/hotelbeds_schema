@@ -589,4 +589,18 @@
         <xsd:element name="bookings" type="ct_booking" maxOccurs="unbounded"></xsd:element>
       </xsd:sequence>
     </xsd:complexType>
+
+    <xsd:complexType name="ct_ActivityMultiFactsheetClientRequest">
+      <xsd:sequence>
+        <xsd:element name="codes" maxOccurs="unbounded" type="ct_code"></xsd:element>
+        <xsd:element name="language" type="st_language"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ct_code">
+      <xsd:sequence>
+        <xsd:element name="activityCode" type="st_activityCode"></xsd:element>
+        <xsd:element name="modalityCodes" type="st_modalityCode" maxOccurs="unbounded"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
 </xsd:schema>
