@@ -326,6 +326,7 @@
         <xsd:element name="from" type="xsd:date"></xsd:element>
         <xsd:element name="to" type="xsd:date"></xsd:element>
         <xsd:element name="order" type="st_ActivitySearchRequestOrder"></xsd:element>
+        <xsd:element name="paxes" type="ct_pax" maxOccurs="unbounded"></xsd:element>
       </xsd:sequence>
     </xsd:complexType>
 
@@ -417,10 +418,10 @@
 
     <xsd:complexType name="ct_BookingCreditConfirmRequest">
       <xsd:sequence>
-        <xsd:element name="language" type="xsd:string"></xsd:element>
+        <xsd:element name="language" type="st_language"></xsd:element>
         <xsd:element name="clientReference" type="xsd:string"></xsd:element>
         <xsd:element name="holder" type="ct_holder"></xsd:element>
-        <xsd:element name="activities" type="ct_activity_rq"></xsd:element>
+        <xsd:element name="activities" type="ct_activity_rq" maxOccurs="unbounded"></xsd:element>
       </xsd:sequence>
     </xsd:complexType>
 
@@ -433,6 +434,9 @@
         <xsd:element name="mailing" type="xsd:boolean"></xsd:element>
         <xsd:element name="telephones" type="xsd:string" maxOccurs="unbounded"></xsd:element>
       </xsd:sequence>
+      <xsd:attribute name="title" type="xsd:string"></xsd:attribute>
+      <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+      <xsd:attribute name="surname" type="xsd:string"></xsd:attribute>
     </xsd:complexType>
 
     <xsd:complexType name="ct_activity_rq">
